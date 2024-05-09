@@ -1,0 +1,16 @@
+#sprite{
+    image-rendering: pixelated;
+    position: fixed;
+    left: 50%;
+    bottom: 50px;
+    filter: drop-shadow(8px 8px 0px #666666);
+}
+
+p1{
+    color: white;
+}
+
+#audiotoggle{
+    position:fixed;
+    left:2000px
+}

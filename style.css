@@ -1,0 +1,53 @@
+#sprite{
+    image-rendering: pixelated;
+    position: fixed;
+    left: 960px;
+    bottom: 172.8px;
+    filter: drop-shadow(12.8px 12.8px 0px #00000098);
+    z-index: 2;
+}
+
+#sprite2{
+    image-rendering: pixelated;
+    position: fixed;
+    left: 1160px;
+    bottom: 172.8px;
+    filter: drop-shadow(12.8px 12.8px 0px #00000098);
+    z-index: 2;
+}
+
+p1{
+    color: rgba(255, 255, 255, 0);
+}
+
+#audiotoggle{
+    position:fixed;
+    left:2000px
+}
+
+body{
+    background-image: url(bg.webp);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    image-rendering: pixelated;
+    z-index: 1;
+}
+
+#tiles{
+    position:fixed;
+    left: 0px;
+    bottom: -236px;
+    width: 100%;
+    filter: drop-shadow(12.8px 12.8px 0px #00000098);
+    z-index: 3;
+}
+
+#questionblock{
+    position: fixed;
+    bottom: 480px;
+    left: 410px;
+    width: 102.4px;
+    height:102.4px;
+    filter: drop-shadow(12.8px 12.8px 0px #00000098);
+}
