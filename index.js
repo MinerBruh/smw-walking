@@ -27,20 +27,32 @@ function jump (){
                 document.getElementById("sprite2").style.bottom = `${yjumpos}px`
         }
         else{
-            document.getElementById("coin").pause()
-            document.getElementById("coin").currentTime = 0
-            document.getElementById("coin").play()            
-            document.getElementById("cfb").src = "coin.gif"
-            document.getElementById("questionblock").classList.add('jump-animation')
-            document.getElementById("cfb").classList.add('coin')
-            jumpvar -= 30.6
-            loop += 42
+            if (!((spritePos.x >= 329 && spritePos.x <= 481) || (spritePos.x >= 149 && spritePos.x <= 269)) || spritePos.y >= 340) {
+                document.getElementById("sprite").style.bottom = "172.8px"
+                document.getElementById("sprite2").style.bottom = "172.8px"
+                spritePos.y = 172.8
+                loop = 60
+                spacepress = 0
+                jumpvar = 30
+            }
+            else{
+                document.getElementById("coin").pause()
+                document.getElementById("coin").currentTime = 0
+                document.getElementById("coin").play()    
+                document.getElementById("block").pause()
+                document.getElementById("block").currentTime = 0
+                document.getElementById("block").play()
+                document.getElementById("cfb").src = "coin.gif"
+                document.getElementById("questionblock").classList.add('jump-animation')
+                document.getElementById("cfb").classList.add('coin')
+                jumpvar -= 30.6
+                loop += 42
+            }
         }
 
 //            }
         //console.log(jumpvar)
         //console.log(loop)
-        console.log(spritePos.x)
         //console.log(spritePos.y)
         spritePos.y += jumpvar
         jumpvar -= 1
@@ -110,9 +122,10 @@ function resetJump(){
 }
 
 function mili(){
+    console.log(spritePos.y)
     yPos = document.getElementById("sprite").style.bottom
     document.getElementById("audiotoggle").onclick = ()=>{audioToggle += 1}
-    if(loop == 60){
+    if(loop >= 60){
         setTimeout(resetJump, 100)
     }
     if(audioToggle == 2){
