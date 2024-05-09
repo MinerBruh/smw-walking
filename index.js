@@ -122,6 +122,7 @@ function resetJump(){
 }
 
 function mili(){
+    document.getElementById("theme").play()
     console.log(spritePos.y)
     yPos = document.getElementById("sprite").style.bottom
     document.getElementById("audiotoggle").onclick = ()=>{audioToggle += 1}
