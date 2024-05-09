@@ -9,7 +9,7 @@ var walkAnimationSprite = 1
 var speedBuffer
 var movekeypress = 0
 var keypressed
-var audioToggle = 0
+var audioToggle = 1
 var speed = 30
 var step = 0
 var walkAnimationSpriteSpeed = speed/25
@@ -27,12 +27,14 @@ function jump (){
                 document.getElementById("sprite2").style.bottom = `${yjumpos}px`
         }
         else{
+            document.getElementById("coin").pause()
+            document.getElementById("coin").currentTime = 0
+            document.getElementById("coin").play()            
             document.getElementById("cfb").src = "coin.gif"
             document.getElementById("questionblock").classList.add('jump-animation')
             document.getElementById("cfb").classList.add('coin')
             jumpvar -= 30.6
             loop += 42
-            document.getElementById("coin").play()            
         }
 
 //            }
@@ -60,6 +62,8 @@ document.onkeydown = function(key){
     if(key.code == 'Space'){
         if(spacepress == 0){
             spacepress += 1
+            document.getElementById("jump").pause()
+            document.getElementById("jump").currentTime = 0
             document.getElementById("jump").play()
             jump()
         }
