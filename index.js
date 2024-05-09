@@ -22,12 +22,12 @@ var jumpvar = 30
 function jump (){
     if(loop != 61){
         var yjumpos = spritePos.y + jumpvar
-        if (!((spritePos.x >= 329 && spritePos.x <= 481) || (spritePos.x >= 149 && spritePos.x <= 399)) || spritePos.y < 333.2) {
+        if (!((spritePos.x >= 329 && spritePos.x <= 481) || (spritePos.x >= 149 && spritePos.x <= 299)) || spritePos.y < 333.2) {
                 document.getElementById("sprite").style.bottom = `${yjumpos}px`
                 document.getElementById("sprite2").style.bottom = `${yjumpos}px`
         }
         else{
-            if (!((spritePos.x >= 329 && spritePos.x <= 481) || (spritePos.x >= 149 && spritePos.x <= 399)) || spritePos.y >= 340) {
+            if (!((spritePos.x >= 329 && spritePos.x <= 481) || (spritePos.x >= 149 && spritePos.x <= 299)) || spritePos.y >= 340) {
                 document.getElementById("sprite").style.bottom = "172.8px"
                 document.getElementById("sprite2").style.bottom = "172.8px"
                 spritePos.y = 172.8
