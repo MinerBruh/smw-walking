@@ -3,6 +3,8 @@ var walkTimer
 var sprite = document.getElementById("sprite");
 var direction
 var spritePos = sprite.getBoundingClientRect()
+spritePos.y = 172.8
+var yPos = document.getElementById("sprite").style.bottom
 var walkAnimationSprite = 1
 var speedBuffer
 var movekeypress = 0
@@ -11,10 +13,40 @@ var audioToggle = 0
 var speed = 30
 var step = 0
 var walkAnimationSpriteSpeed = speed/25
-
-
+var spacepress = 0
+var loop = 0
+var jumpvar = 30
 
 //Detects key press
+
+function jump (){
+    if(loop != 61){
+        var yjumpos = spritePos.y + jumpvar
+        if (!((spritePos.x >= 329 && spritePos.x <= 481) || (spritePos.x >= 149 && spritePos.x <= 269)) || spritePos.y < 333.2) {
+                document.getElementById("sprite").style.bottom = `${yjumpos}px`
+                document.getElementById("sprite2").style.bottom = `${yjumpos}px`
+        }
+        else{
+            document.getElementById("cfb").src = "coin.gif"
+            document.getElementById("questionblock").classList.add('jump-animation')
+            document.getElementById("cfb").classList.add('coin')
+            jumpvar -= 30.6
+            loop += 42
+            document.getElementById("coin").play()            
+        }
+
+//            }
+        //console.log(jumpvar)
+        //console.log(loop)
+        console.log(spritePos.x)
+        //console.log(spritePos.y)
+        spritePos.y += jumpvar
+        jumpvar -= 1
+        loop += 1
+        setTimeout(jump,10)
+    }
+}
+
 document.onkeydown = function(key){
     if(key.key == "d"){
         direction = "Right"
@@ -25,7 +57,14 @@ document.onkeydown = function(key){
         walkAnimationSprite += walkAnimationSpriteSpeed
         step += 1
     }
-    if(key.key == "a"){
+    if(key.code == 'Space'){
+        if(spacepress == 0){
+            spacepress += 1
+            document.getElementById("jump").play()
+            jump()
+        }
+    }
+    if(key.key == 'a'){
         direction = "Left"
         spritePos.x -= speed
         document.getElementById("sprite").style.left = `${spritePos.x}px`
@@ -53,12 +92,24 @@ const miliInterval = setInterval(mili,1)
 var walkAnimation
 
 
-
+function resetJump(){
+    spacepress = 0
+    loop = 0
+    //console.log(spacepress)
+    spritePos.y = 172.8
+    jumpvar = 30
+    document.getElementById("sprite").style.bottom = "172.8px"
+    document.getElementById("sprite2").style.bottom = "172.8px"
+    document.getElementById("questionblock").classList.remove('jump-animation')
+    document.getElementById("cfb").classList.remove('coin')
+    document.getElementById("cfb").src = "coin_sprites/c3.png"
+}
 
 function mili(){
-    console.log(audioToggle)
-    document.getElementById("audiotoggle").onclick = ()=>{
-        audioToggle += 1
+    yPos = document.getElementById("sprite").style.bottom
+    document.getElementById("audiotoggle").onclick = ()=>{audioToggle += 1}
+    if(loop == 60){
+        setTimeout(resetJump, 100)
     }
     if(audioToggle == 2){
         audioToggle = 0
@@ -115,7 +166,16 @@ function mili(){
         step = 0
         document.getElementById("footstep").pause()
     }
-
+    if(loop >= 1 && loop <= 60){
+        if(jumpvar >= 0){
+            document.getElementById("sprite").src = "sprites/jump.png"
+            document.getElementById("sprite2").src = "sprites/ljump.png"
+        }
+        if(jumpvar <= -1){
+            document.getElementById("sprite").src = "sprites/fall.png"
+            document.getElementById("sprite2").src = "sprites/lfall.png"
+        }
+    }
     if(spritePos.x >= 2200){
         document.getElementById("sprite").style.left = '-50px'
         spritePos.x = -240

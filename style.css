@@ -50,4 +50,51 @@ body{
     width: 102.4px;
     height:102.4px;
     filter: drop-shadow(12.8px 12.8px 0px #00000098);
+    z-index: 2;
+}
+
+.jump-animation{
+    animation-name: jump;
+    animation-duration: .2s;
+    animation-timing-function:ease-out;;
+}
+
+.coin{
+    position: fixed;
+    bottom: 480px;
+    left: 410px;
+    width: 102.4px;
+    height:102.4px;
+    filter: drop-shadow(12.8px 12.8px 0px #00000098);
+    opacity: 100%;
+    animation-name: coinf;
+    animation-duration: .5s;
+    z-index: 1;
+    animation-timing-function: ease-out;
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-102.4px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+@keyframes coinf {
+    0% {
+        transform: translateY(-102.4px);
+        opacity: 100%;
+    }
+    99% {
+        opacity: 100%;
+    }
+    100% {
+        opacity: 0%;
+        transform: translateY(-204.8px);
+    }
 }
